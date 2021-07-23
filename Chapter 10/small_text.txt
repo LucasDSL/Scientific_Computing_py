@@ -1,0 +1,7 @@
+This is a small text made by 
+me with the purpose of analyse the 
+frequency of different letters on 
+different languages through a script 
+written in python by me for the course 
+of scientific computing with python 
+from free code camp.

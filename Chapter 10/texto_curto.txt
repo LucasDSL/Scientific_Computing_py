@@ -1,0 +1,7 @@
+Esse é um texto curto feito 
+com o intuito de analisar a 
+frequência de letras em diferentes 
+línguas através de um programa 
+escrito em python por mim para o 
+curso de Computação Científica com 
+Python do Free Code Camp.
