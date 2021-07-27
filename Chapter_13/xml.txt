@@ -1,0 +1,18 @@
+xml as a tree: 
+<a>
+    <b>x</b>
+    <c>
+        <d>y</d>
+        <e>z</e>
+    </c>
+</a>
+                                    a
+                                   / \
+                                  /   \
+                                 /     \
+                                b       c
+                               /       / \
+                              x       /   \
+                                     d     e
+                                    /       \
+                                   y         z

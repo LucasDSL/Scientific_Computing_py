@@ -1,0 +1,8 @@
+Main difference between both markup languages: 
+
+-XML doesn't do anything, the purpose of this language is to carry data
+while HTML worries about showing data.
+
+- XML doesn't have pre-defined tags like '<a></a>' or '<h1></h1>', you can
+use anything written by you as a tag.
+
