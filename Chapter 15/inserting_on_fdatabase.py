@@ -14,6 +14,5 @@ for row in cur:
     # Connection is open so we can use the data that is beeing passed by it.
     print(row)
 
-cur.execute('DELETE FROM Tracks WHERE plays < 100')
 conn.commit()
 conn.close()
