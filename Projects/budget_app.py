@@ -1,25 +1,44 @@
 class Category:
+  ledger = list()
   def __init__(self, category):
     self.category = category
-    self.ledger = list()
   
   def deposit(self, amount, description=''):
     self.ledger.append({"amount": amount,
     "description": description})
   
-  def withdraw(self, amount, description=''):
-    total_money = None
+  def withdraw(self, amount, description=''): # Implement check_funds 
+    total_money = 0
+    if len(self.ledger) < 1:
+      return False 
     for obj in self.ledger: 
-      if total_money == None: 
-        total_money = 0
-      total_money += obj.amount
-      if total_money <= 0: 
-        return False
+      total_money += obj["amount"]
+    if amount > total_money: 
+      return False 
+    
     self.ledger.append({"amount": amount*(-1), 
     "description": description})
     return True
+
   def get_balance(self):
-    print('')
+    balance = 0
+    for obj in self.ledger: 
+      balance += obj["amount"]
+    return balance
+
+  def transfer(self, amount, budget_category_destination): # Implement check_funds
+    self.withdraw(amount, f"Transfer to {budget_category_destination}")
+    budget_category_destination.deposit(amount, f"Transfer from {self.category}")
+
+  def check_funds(self, amount):
+    total_balance = self.get_balance()
+    if amount > total_balance:
+      return False 
+    return True
+
+  def __str__(self) -> str:
+      print("Create format of print of object")
+
 
 def create_spend_chart(categories):
   print('')
