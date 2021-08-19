@@ -8,11 +8,9 @@ class Category:
     "description": description})
   
   def withdraw(self, amount, description=''): # Implement check_funds 
-    total_money = 0
     if len(self.ledger) < 1:
       return False 
-    for obj in self.ledger: 
-      total_money += obj["amount"]
+    total_money = self.get_balance()
     if amount > total_money: 
       return False 
     
