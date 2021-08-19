@@ -8,15 +8,14 @@ class Category:
     "description": description})
   
   def withdraw(self, amount, description=''): # Implement check_funds 
-    if len(self.ledger) < 1:
-      return False 
-    total_money = self.get_balance()
-    if amount > total_money: 
-      return False 
-    
-    self.ledger.append({"amount": amount*(-1), 
-    "description": description})
-    return True
+    if self.check_funds(amount):
+      total_money = self.get_balance()
+      if amount > total_money: 
+        return False 
+      self.ledger.append({"amount": amount*(-1), 
+      "description": description})
+      return True
+    return False
 
   def get_balance(self):
     balance = 0
