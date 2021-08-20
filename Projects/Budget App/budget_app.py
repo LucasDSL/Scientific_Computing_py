@@ -22,7 +22,7 @@ class Category:
 
   def transfer(self, amount, budget_category_destination): # Implement check_funds
     self.withdraw(amount, f"Transfer to {budget_category_destination}")
-    budget_category_destination.deposit(amount, f"Transfer from {self.category}")
+    Category.deposit(budget_category_destination, amount, f"Transfer from {self.category}")
 
   def check_funds(self, amount):
     total_balance = self.get_balance()
