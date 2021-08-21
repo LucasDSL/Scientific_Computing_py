@@ -29,4 +29,9 @@ print(business.transfer(20, food))
 print(business.ledger)
 print(food.ledger)'''
 
-print(business)
+'''business.deposit(100, "money100")
+food.deposit(100, "Money100")
+food.transfer(40, entertainment)
+business.transfer(20, food)
+
+print(business)'''

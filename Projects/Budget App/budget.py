@@ -34,7 +34,16 @@ class Category:
     return True
 
   def __str__(self) -> str:
-      return "*{^}           *".format(self.category)
+    string_print= f"{self.category:*^30}\n"
+    for i in self.ledger:
+      if len(i["description"]) > 23: 
+        desc_23_char = i["description"][0:23]
+        string_print += f"{desc_23_char:<23}{i['amount']:>7}\n"
+      else:
+        string_print += f"{i['description']:<23}{i['amount']:>7.2d}\n"
+    string_print += f"Total: {self.get_balance()}"
+    return string_print
+          
 
 
 def create_spend_chart(categories):
