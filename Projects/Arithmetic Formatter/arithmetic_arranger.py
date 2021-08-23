@@ -1,4 +1,4 @@
-def arithmetic_arranger(list_sums):
+def arithmetic_arranger(list_sums, option_argument=True):
     # Transforming all string on list of strings: 
     for i in range(0, len(list_sums)):
         list_sums[i] = list_sums[i].split(" ")    
@@ -12,40 +12,59 @@ def arithmetic_arranger(list_sums):
         if len(sum[0]) > 4 or len(sum[2]) > 4: 
             return "Error: Numbers cannot be more than four digits."
         try: 
-            sum[0] = int(sum[0])
-            sum[2] = int(sum[2])
+            int(sum[0])
+            int(sum[2])
         except: 
             return "Error: Numbers must only contain digits."
 
-    def return_string_formatted_to_size(list_str, line=1):
-        bigger_str = len(list_str[0]) if list_str[0] >= list_str[2]else len(list_str[2])
-
-        ''' Return the string formated to the size of the number + 2 spaces (1 for the operand sign
-         and 1 for the space between the sign and the number on the second line ) '''
-        if line == 1:
-            if bigger_str == 1: 
-                return "{first_line_element:>3}".format(first_line_element = list_str[0]) 
-            elif bigger_str == 2: 
-                return "{first_line_element:>4}".format(first_line_element = list_str[0])   
-            elif bigger_str == 3: 
-                return "{first_line_element:>5}".format(first_line_element = list_str[0])   
-            elif bigger_str == 4: 
-                return "{first_line_element:>6}".format(first_line_element = list_str[0]) 
-
+    if not option_argument:
+        return ""
     string_return = ""
     # Formating the first line of the result. 
     for sum in list_sums:
-        string_return += "{first_line_element:>6}".format(first_line_element = sum[0]) 
-        string_return += "    "
-    string_return += "\n"
+        # Getting the size of the bigger number: 
+        sz_n1 = len(sum[0]) # Size in digits of the first number.
+        sz_n2 = len(sum[2]) # Size in digits of the second number.
+        size_bigger_num = sz_n1 if sz_n1 > sz_n2 else sz_n2
+        sum.append(size_bigger_num)
+        string_return += f"{sum[0]:>{size_bigger_num + 2}}" # Plus two spaces (1 for the
+        # operation sign below and one for the blank space after it )
+        if list_sums[-1] == sum:
+            string_return += "\n"
+        else:
+            string_return += "    "
+
     # Formating the second line of the result
     for sum in list_sums:
-        string_return += "{operation_sign} {operand:>4}".format(operation_sign = sum[1],
-        operand = sum[2])
-        string_return += "    "
-    string_return += "\n"
+        string_return += f"{sum[1]} {sum[2]:>{sum[3]}}" # Sum[3] is the 
+        # equivalent of the size_bigger_num of the current two operands
+        if list_sums[-1] == sum:
+            string_return += "\n"
+        else:
+            string_return += "    "
+
     # Formating the line below the operation: 
     for sum in list_sums:
-        pass
-    print(string_return)
+        string_return += "-" * (sum[3] + 2) # Plus two again (1 sign + 1 blank space)
+        if list_sums[-1] == sum:
+            string_return += "\n"
+        else:
+            string_return += "    "
+
+    # Getting the result from the sum of the two operands: 
+    for sum in list_sums:
+        current_sum = 0
+        if sum[1] == "+":
+            current_sum += int(sum[0]) + int(sum[2])
+        else: 
+            current_sum += int(sum[0]) - int(sum[2])
+        current_sum = str(current_sum)
+        size_current_sum = len(current_sum)
+        string_return += f"{current_sum:>{sum[3] + 2}}"
+        if list_sums[-1] == sum:
+            string_return += "\n"
+        else:
+            string_return += "    "
+
+    return string_return
 
