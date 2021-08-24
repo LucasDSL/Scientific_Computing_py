@@ -1,25 +1,25 @@
 class Rectangle:
-    def __init__(self, width, height):
+    def __init__(self, width, heigth):
         self.width = width
-        self.height = height 
+        self.heigth = heigth 
     
     def set_width(self, new_width):
         self.width = new_width
-    def self_height(self, new_height):
-        self.height = new_height
+    def set_height(self, new_heigth):
+        self.heigth = new_heigth
 
     def get_area(self):
-        return self.width * self.height
+        return self.width * self.heigth
     
     def get_perimeter(self):
-        return (2 * self.width + 2 * self.height)
+        return (2 * self.width + 2 * self.heigth)
 
     def get_diagonal(self):
-        diagonal = ((self.width ** 2) + (self.height ** 2)) ** 0.5
+        diagonal = ((self.width ** 2) + (self.heigth ** 2)) ** 0.5
         return diagonal 
     
-    def git_picture(self):
-        if self.height > 50 or self.width > 50:
+    def get_picture(self):
+        if self.heigth > 50 or self.width > 50:
             return "Too big for picture."
         picture = ""
         for line in range(0, self.heigth):
@@ -33,6 +33,12 @@ class Rectangle:
         fits_in = this_area // area_shape
         return fits_in 
     
-    def __str__(self):
-        if __class__ == "Rectangle":
-            return f"Rectangle(width={self.width}, height={self.height}"
+    def __str__(self): # Figure how to discover object's class
+        if self.__class__ == "Rectangle":
+            return f"Rectangle(width={self.width}, height={self.heigth}"
+
+class Square(Rectangle):
+    def __init__(self, side):
+        self.side = side 
+        self.width = side 
+        self.heigth = side 
