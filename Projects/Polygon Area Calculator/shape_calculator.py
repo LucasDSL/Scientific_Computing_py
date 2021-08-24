@@ -34,11 +34,22 @@ class Rectangle:
         return fits_in 
     
     def __str__(self): # Figure how to discover object's class
-        if self.__class__ == "Rectangle":
-            return f"Rectangle(width={self.width}, height={self.heigth}"
+        return f"Rectangle(width={self.width}, height={self.heigth})"
 
 class Square(Rectangle):
     def __init__(self, side):
-        self.side = side 
         self.width = side 
         self.heigth = side 
+    
+    def set_side(self, side):
+        self.width = side
+        self.heigth = side  
+    def set_width(self, new_side):
+        self.width = new_side
+        self.heigth = new_side
+    def set_heigth(self, new_side):
+        self.width = new_side
+        self.heigth = new_side
+    
+    def __str__(self):
+        return f"Square(side={self.width})"
