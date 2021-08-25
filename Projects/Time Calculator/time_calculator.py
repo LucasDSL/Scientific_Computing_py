@@ -5,14 +5,16 @@ def add_timer(start_time, duration, day_week=""):
     start_time.insert(0, start_time[0].split(":"))
     # Remove the format that has ":"
     start_time.remove(start_time[1])
+    # The same as above on duration
     duration = duration.split(":")
     total_minutes = int(duration[1]) + int(start_time[0][1])
     final_hour = 0
     days_later = 0
     final_minutes = 0
+    # Get the beggining hour and period of time: AM or PM
     old_hour = start_time[0][0]
     old_period = start_time[1]
-    ''' Calculating the minutes in two situations: 
+    ''' Calculating the final minutes in two situations: 
     first if the sum of the starting and duration numbers are bigger than 60,
     whereas there will be one your more hour and where there are not more than
     60 minutes.'''
