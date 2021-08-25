@@ -7,7 +7,6 @@ def add_timer(start_time, duration, day_week=""):
     start_time.remove(start_time[1])
     duration = duration.split(":")
     total_minutes = int(duration[1]) + int(start_time[0][1])
-    print(total_minutes)
     final_hour = 0
     days_later = 0
     final_minutes = 0
