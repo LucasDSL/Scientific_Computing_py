@@ -38,9 +38,16 @@ def experiment(**kwargs):
     for ex in range(0, num_experiments):
         # Create a copy of the hat so we don't empty its list of balls
         copy_hat = copy.deepcopy(hat)
+        # Draw the possible balls 
         drawed_balls = copy_hat.draw(num_balls_drawn)
-        succesful = True 
+        succesful = True # Expects the experiment to go well
         for color, quantity in expected_balls.items():
+            # For each draw, count the "quantity" of balls 
+            # from a color "color" and compare it to 
+            # the expected amount of balls from that color
+            # and check if the experiment were succesfull or not,
+            # if not: go to the next one, if it were, sum 1 to the 
+            # succesfull experiment's variable "succesfull_ex"
             if drawed_balls.count(color) < quantity: 
                 succesful = False 
                 break
