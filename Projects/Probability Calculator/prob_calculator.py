@@ -28,7 +28,28 @@ class Hat:
             number_of_draws -= 1
         return balls_drawed
 
+def experiment(**kwargs):
+    hat = kwargs["hat"]
+    num_experiments = kwargs["num_experiments"]
+    num_balls_drawn = kwargs["num_balls_drawn"]
+    expected_balls = kwargs["expected_balls"]
 
+    succesful_ex = 0
+    for ex in range(0, num_experiments):
+        # Create a copy of the hat so we don't empty its list of balls
+        copy_hat = copy.deepcopy(hat)
+        drawed_balls = copy_hat.draw(num_balls_drawn)
+        succesful = True 
+        for color, quantity in expected_balls.items():
+            if drawed_balls.count(color) < quantity: 
+                succesful = False 
+                break
+             
+        if succesful: 
+            succesful_ex += 1
+        
+    probability = succesful_ex / num_experiments
+    return probability
 
 
 
